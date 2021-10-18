@@ -14,6 +14,6 @@ const getFavourite = (blogs) => {
   ), blogs[0])
 }
 
-module.exports = {
+export {
   totalLikes, getFavourite
 }

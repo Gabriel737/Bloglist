@@ -41,9 +41,7 @@ describe('General Tests', () => {
 describe('Addition of a blog', () => {
 
   test('Added blog gets added to DB', async () => {
-
     const oldBlogs = await helper.getBlogs()
-
     const newBlog = {
       'title': 'Test',
       'author': 'Test',
@@ -86,7 +84,8 @@ describe('Addition of a blog', () => {
     await api
       .post('/api/blogs')
       .send(newBlog)
-      .expect(500)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
   })
 
   test('Added blog without url gets rejected', async () => {
@@ -98,7 +97,8 @@ describe('Addition of a blog', () => {
     await api
       .post('/api/blogs')
       .send(newBlog)
-      .expect(500)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
   })
 })
 
